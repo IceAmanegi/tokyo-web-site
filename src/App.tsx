@@ -1,38 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-import { IgrNavDrawer, IgrNavDrawerHeaderItem, IgrNavDrawerItem } from 'igniteui-react';
-import 'igniteui-webcomponents/themes/light/bootstrap.css';
-
-import { IgrIcon } from 'igniteui-react';
-import 'igniteui-webcomponents/themes/light/bootstrap.css';
-
-
-
+import React, { useState } from 'react';
+import './App.css'; // CSSは別ファイルに分けています
 
 function App() {
-  return (
-    <IgrNavDrawer open={true}>
-    <IgrNavDrawerHeaderItem>
-        <span>Sample Drawer</span>
-    </IgrNavDrawerHeaderItem>
-    <IgrNavDrawerItem>
-        <div slot="icon">
-            <IgrIcon name="home" collection="material" />
-        </div>
-        <span slot="content">Home</span>
-    </IgrNavDrawerItem>
-    <IgrNavDrawerItem>
-        <div slot="icon">
-            <IgrIcon name="search" collection="material" />
-        </div>
-        <span slot="content">Search</span>
-    </IgrNavDrawerItem>
-</IgrNavDrawer>
+  const [isOpen, setIsOpen] = useState(false);
 
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="App">
+
+      <button className="circle-button" onClick={openModal}>
+        モーダルを開く
+      </button>
+
+      <div className={`modal-overlay ${isOpen ? 'active' : ''}`} onClick={closeModal}>
+        <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <p>これはモーダルです。</p>
+          <button onClick={closeModal}>閉じる</button>
+        </div>
+      </div>
+    </div>
   );
 }
 
-
 export default App;
+
+
+
+
+

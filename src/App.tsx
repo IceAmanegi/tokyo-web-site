@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css'; // CSSは別ファイルに分けています
+import './App.css';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,17 +12,38 @@ function App() {
     setIsOpen(false);
   };
 
+  const categories = [
+    'グルメ', 'イベント', '日常',
+    '観光', '絶景', '特集',
+    '体験', '多摩市', '奥多摩'
+  ];
+
   return (
     <div className="App">
-
       <button className="circle-button" onClick={openModal}>
         モーダルを開く
       </button>
-
-      <div className={`modal-overlay ${isOpen ? 'active' : ''}`} onClick={closeModal}>
+      
+      <div 
+        className={`modal-overlay ${isOpen ? 'active' : ''}`} 
+        onClick={closeModal}
+      >
         <div className="modal" onClick={(e) => e.stopPropagation()}>
-          <p>これはモーダルです。</p>
-          <button onClick={closeModal}>閉じる</button>
+          <button className="close-button" onClick={closeModal}>
+            ×
+          </button>
+          
+          <h2 style={{ fontSize: '14px', color: 'gray', marginBottom: '10px' }}>
+            カテゴリを選択
+          </h2>
+          
+          <div className="category-scroll">
+            {categories.map((category, index) => (
+              <button key={index} className="category-button">
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -30,8 +51,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-

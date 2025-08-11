@@ -2,6 +2,8 @@
   text-align: center;
   padding: 50px;
 }
+
+/* メインボタン */
 .circle-button {
   background-color: black;
   color: rgb(159, 27, 27);
@@ -14,16 +16,18 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: background-color 0.3s;
 
-  position: fixed;
+  position: fixed; /* 右下に固定 */
   bottom: 10px;
   right: 10px;
   padding: 20px 20px;
 }
 
+/**/
 .circle-button:hover {
   background-color: #333;
 }
 
+/* モーダルオーバーレイ */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -40,11 +44,13 @@
   z-index: 1000;
 }
 
+/**/
 .modal-overlay.active {
   opacity: 1;
   visibility: visible;
 }
 
+/* モーダル本体 */
 .modal {
   background: white;
   width: 100%;
@@ -53,9 +59,57 @@
   padding: 20px;
   transform: translateY(100%);
   transition: transform 0.3s ease;
+  position: relative;
 }
 
-/* モーダル表示時にスライドアップ */
 .modal-overlay.active .modal {
   transform: translateY(0);
+}
+
+/* カテゴリースクロール */
+.category-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.category-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* カテゴリーボタン */
+.category-button {
+  flex: 0 0 auto;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  background-color: #eee;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.category-button:hover {
+  background-color: #ccc;
+}
+
+/* 閉じるボタン */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.3s;
+}
+
+.close-button:hover {
+  color: #333;
 }

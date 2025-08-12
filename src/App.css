@@ -93,9 +93,10 @@
 
 /* 見出し */
 .modal-header h2 {
-  font-size: 14px;
-  color: gray;
+  font-size: 24px;
+  color: #000;
   margin: 0;
+  font-weight: normal;
 }
 
 /* カテゴリースクロールエリア */
@@ -138,17 +139,24 @@
 /* 閉じるボタン */
 .close-button {
   position: absolute;
-  right: 0;
-  background: none;
-  border: none;
-  font-size: 24px;
+  top: 5px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  background-color: #eee;
+  color: #000000;
+  font-size: 20px;
   cursor: pointer;
-  color: #888;
-  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .close-button:hover {
-  color: #333;
+  background-color: #f5f5f5;
 }
 
 /* スクロールバーのスタイリング */

@@ -37,7 +37,7 @@ function App() {
       >
         <div className="modal" onClick={(e) => e.stopPropagation()}>
           <div className="modal-header">
-            <h2 style={{ fontSize: '14px', color: 'gray', margin: 0 }}>
+            <h2>
               絞り込む
             </h2>
             <button className="close-button" onClick={closeModal}>

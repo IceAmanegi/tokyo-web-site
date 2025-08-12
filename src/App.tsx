@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
 import menuIcon from './assets/logoSort.png';
+import { categories, Category } from './data/categories';
 
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
 
   const openModal = () => {
     setIsOpen(true);
@@ -14,11 +16,13 @@ function App() {
     setIsOpen(false);
   };
 
-  const categories = [
-    'グルメ', 'イベント', '日常',
-    '観光', '絶景', '特集',
-    '体験', '多摩市', '奥多摩'
-  ];
+  const toggleCategory = (category: string) => {
+    setSelectedCategories(prev => 
+      prev.includes(category)
+        ? prev.filter(c => c !== category)
+        : [...prev, category]
+    );
+  };
 
   return (
     <div className="App">
@@ -43,7 +47,11 @@ function App() {
           
           <div className="category-scroll">
             {categories.map((category, index) => (
-              <button key={index} className="category-button">
+              <button 
+                key={index} 
+                className={`category-button ${selectedCategories.includes(category) ? 'selected' : ''}`}
+                onClick={() => toggleCategory(category)}
+              >
                 {category}
               </button>
             ))}

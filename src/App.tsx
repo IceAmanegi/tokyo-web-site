@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
+import menuIcon from './assets/logoSort.png';
+
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,21 +23,23 @@ function App() {
   return (
     <div className="App">
       <button className="circle-button" onClick={openModal}>
-        モーダルを開く
+        <img src={menuIcon} alt="メニュー" />
+        
       </button>
       
-      <div 
+      <div
         className={`modal-overlay ${isOpen ? 'active' : ''}`} 
         onClick={closeModal}
       >
         <div className="modal" onClick={(e) => e.stopPropagation()}>
-          <button className="close-button" onClick={closeModal}>
-            ×
-          </button>
-          
-          <h2 style={{ fontSize: '14px', color: 'gray', marginBottom: '10px' }}>
-            カテゴリを選択
-          </h2>
+          <div className="modal-header">
+            <h2 style={{ fontSize: '14px', color: 'gray', margin: 0 }}>
+              絞り込む
+            </h2>
+            <button className="close-button" onClick={closeModal}>
+              ×
+            </button>
+          </div>
           
           <div className="category-scroll">
             {categories.map((category, index) => (
